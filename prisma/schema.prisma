@@ -9,3 +9,11 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Game {
+  id         Int    @unique
+  name       String @unique
+  boardState String
+  turn       String
+  winner     String
+}

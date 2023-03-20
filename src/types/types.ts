@@ -1,4 +1,5 @@
-// type Move
+import { type } from "os";
+
 export type PieceMove = {
   name: string;
   quadrant: number;
@@ -13,9 +14,10 @@ export type RotationMove = {
 
 export type GameState = {
   name: string;
+  turn: string;
   isOver: boolean;
   winner: string;
-  state: string[][];
+  state: string[];
 };
 
 export type PieceProps = {
