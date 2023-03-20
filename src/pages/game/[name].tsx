@@ -4,6 +4,7 @@ import Head from "next/head";
 import Image from "next/image";
 
 import Board from "../../components/Board";
+import Share from "../../components/Share";
 import { BoardProps } from "../../types/types";
 
 import { startingState } from "../../utils";
@@ -22,7 +23,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   console.log(context.params?.name);
   return {
-    props: { name: "hi" },
+    props: { name: context.params?.name },
   };
 };
 
@@ -68,13 +69,14 @@ export default function Home({ name }: { name: string }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <div className="flex justify-center items-center">
+        <div className="flex justify-center items-center flex-col">
           <Board
             quadrants={state.quadrants}
             addPiece={addPiece}
             rotateQuadrant={rotateQuadrant}
           />
-        </div>
+          <Share name={gameName} />
+        </div>{" "}
       </main>
     </>
   );

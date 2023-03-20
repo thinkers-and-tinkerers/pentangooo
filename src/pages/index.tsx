@@ -8,22 +8,22 @@ import Share from "../components/Share";
 import { BoardProps } from "../types/types";
 import { startingState } from "../utils";
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  //   const response = await fetch(`api/game/${context.params?.name}`);
-  //   const responseData = await response.json();
-  //   if (!context.params?.name) {
-  //     return {
-  //       redirect: {
-  //         destination: "/",
-  //         permanent: false,
-  //       },
-  //     };
-  //   }
-  console.log(context.params?.name);
-  return {
-    props: { name: "hi" },
-  };
-};
+// export const getServerSideProps: GetServerSideProps = async (context) => {
+//   //   const response = await fetch(`api/game/${context.params?.name}`);
+//   //   const responseData = await response.json();
+//   //   if (!context.params?.name) {
+//   //     return {
+//   //       redirect: {
+//   //         destination: "/",
+//   //         permanent: false,
+//   //       },
+//   //     };
+//   //   }
+//   console.log(context.params?.name);
+//   return {
+//     props: { name: context.params?.name },
+//   };
+// };
 export default function Home({ name }: { name: string }) {
   const [state, setState] = useState<BoardProps>(startingState);
   const [gameName, setGameName] = useState<string>(name);
@@ -70,7 +70,7 @@ export default function Home({ name }: { name: string }) {
             addPiece={addPiece}
             rotateQuadrant={rotateQuadrant}
           />
-          <Share name={gameName} />
+          {name && <Share name={gameName} />}
         </div>
       </main>
     </>
