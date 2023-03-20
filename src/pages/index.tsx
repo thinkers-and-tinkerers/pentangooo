@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { GetServerSideProps } from "next";
 import Head from "next/head";
 import Image from "next/image";
 
@@ -7,6 +8,14 @@ import { BoardProps } from "../types/types";
 
 import { startingState } from "../utils";
 
+export const getServerSideProps: GetServerSideProps = async ({ params }) => {
+  const response = await fetch(`api/game/${params.name}`);
+  const posts = await response.json();
+
+  return {
+    props: { posts },
+  };
+};
 export default function Home({ name }: { name: string }) {
   const [state, setState] = useState<BoardProps>(startingState);
   const [gameName, setGameName] = useState<string>(name);

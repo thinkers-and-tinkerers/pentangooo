@@ -26,11 +26,13 @@ export default function RotationButtonGroup({ quadrant, rotateQuadrant }: any) {
           quadrant={quadrant}
           direction="CW"
           rotateQuadrant={rotateQuadrant}
+          disabled={false}
         />
         <RotationButton
           quadrant={quadrant}
           direction="CCW"
           rotateQuadrant={rotateQuadrant}
+          disabled={false}
         />
       </div>
     </div>
