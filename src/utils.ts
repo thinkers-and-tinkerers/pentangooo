@@ -1,5 +1,7 @@
 import { BoardProps } from "./types/types";
 
+export const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
+
 export const startingState: BoardProps = {
   name: "board",
   quadrants: [

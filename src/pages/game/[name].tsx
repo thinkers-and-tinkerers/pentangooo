@@ -3,10 +3,10 @@ import { GetServerSideProps } from "next";
 import Head from "next/head";
 import Image from "next/image";
 
-import Board from "../components/Board";
-import Share from "../components/Share";
-import { BoardProps } from "../types/types";
-import { startingState } from "../utils";
+import Board from "../../components/Board";
+import { BoardProps } from "../../types/types";
+
+import { startingState } from "../../utils";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   //   const response = await fetch(`api/game/${context.params?.name}`);
@@ -19,12 +19,16 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   //       },
   //     };
   //   }
+
   console.log(context.params?.name);
   return {
     props: { name: "hi" },
   };
 };
+
 export default function Home({ name }: { name: string }) {
+  console.log("I MADE IT HERE");
+  console.log(name);
   const [state, setState] = useState<BoardProps>(startingState);
   const [gameName, setGameName] = useState<string>(name);
 
@@ -64,13 +68,12 @@ export default function Home({ name }: { name: string }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <div className="flex justify-center items-center flex-col">
+        <div className="flex justify-center items-center">
           <Board
             quadrants={state.quadrants}
             addPiece={addPiece}
             rotateQuadrant={rotateQuadrant}
           />
-          <Share name={gameName} />
         </div>
       </main>
     </>
