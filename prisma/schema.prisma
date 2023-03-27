@@ -11,9 +11,12 @@ datasource db {
 }
 
 model Game {
-  id         Int    @unique
-  name       String @unique
-  boardState String
-  turn       String
-  winner     String
+  id     Int    @unique
+  name   String @unique
+  quad1  String
+  quad2  String
+  quad3  String
+  quad4  String
+  turn   String
+  winner String
 }
